@@ -31,6 +31,7 @@ jobs:
           GROUP_ID=$(xmllint --xpath "string(//project/groupId)" pom.xml)
           ARTIFACT_ID=$(xmllint --xpath "string(//project/artifactId)" pom.xml)
           PACKAGE_NAME="${GROUP_ID}.${ARTIFACT_ID}"
+          echo "Maven package name is: $PACKAGE_NAME"
           echo "PACKAGE_NAME=$PACKAGE_NAME" >> $GITHUB_ENV
 
       - name: Delete existing shared-library package from GitHub Packages
