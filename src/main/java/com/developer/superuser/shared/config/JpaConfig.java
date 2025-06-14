@@ -13,10 +13,10 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @Configuration
 @EnableJpaRepositories(basePackages = "com.developer.superuser", includeFilters = @ComponentScan.Filter(type = FilterType.REGEX, pattern = ".*Repository$"))
 @EnableTransactionManagement
-@EnableJpaAuditing
+@EnableJpaAuditing(auditorAwareRef = "standardAuditorAware")
 public class JpaConfig {
     @Bean
-    public AuditorAware<String> auditorAware() {
+    public AuditorAware<String> standardAuditorAware() {
         return new StandardAuditorAware();
     }
 }
