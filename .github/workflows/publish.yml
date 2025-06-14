@@ -22,17 +22,22 @@ jobs:
           java-version: '21'
           distribution: temurin
 
-      - name: Extract repo name and export as env var
+      - name: Install xml util tools
+        run: sudo apt install -y libxml2-utils
+
+      - name: Extract maven package name from pom.xml
+        id: extract
         run: |
-          REPOSITORY="${{ github.repository }}"
-          REPOSITORY_NAME="${REPOSITORY##*/}"
-          echo "PACKAGE_NAME=$REPOSITORY_NAME" >> $GITHUB_ENV
+          GROUP_ID=$(xmllint --xpath "string(//project/groupId)" pom.xml)
+          ARTIFACT_ID=$(xmllint --xpath "string(//project/artifactId)" pom.xml)
+          PACKAGE_NAME="${GROUP_ID}.${ARTIFACT_ID}"
+          echo "PACKAGE_NAME=$PACKAGE_NAME" >> $GITHUB_ENV
 
       - name: Delete existing shared-library package from GitHub Packages
         run: |
           echo "Fetching versions of the Maven package..."
           VERSION_ID=$(curl -s -H "Authorization: Bearer ${{ secrets.GH_PACKAGE_PAT }}" \
-            -H "Accept: application/vnd.github+json" \
+            -H "Accept: application/vnd.github.v3+json" \
             "https://api.github.com/users/${{ github.repository_owner }}/packages/maven/${{ env.PACKAGE_NAME }}/versions" \
             | jq '.[] | select(.name=="latest") | .id')
           
@@ -40,7 +45,7 @@ jobs:
             echo "Found existing 'latest' version with ID: $VERSION_ID. Deleting..."
             curl -X DELETE \
               -H "Authorization: Bearer ${{ secrets.GH_PACKAGE_PAT }}" \
-              -H "Accept: application/vnd.github+json" \
+              -H "Accept: application/vnd.github.v3+json" \
               "https://api.github.com/users/${{ github.repository_owner }}/packages/maven/${{ env.PACKAGE_NAME }}/versions/$VERSION_ID"
             echo "Deleted previous 'latest' version."
           else
