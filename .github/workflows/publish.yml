@@ -47,13 +47,13 @@ jobs:
             curl -X DELETE \
               -H "Authorization: Bearer ${{ secrets.GH_PACKAGE_PAT }}" \
               -H "Accept: application/vnd.github.v3+json" \
-              "https://api.github.com/users/${{ github.repository_owner }}/packages/maven/${{ env.PACKAGE_NAME }}/versions/$VERSION_ID"
+              "https://api.github.com/users/${{ github.repository_owner }}/packages/maven/${{ env.PACKAGE_NAME }}"
             echo "Deleted previous 'latest' version."
           else
             echo "No existing 'latest' version found. Skipping deletion."
           fi
 
-      - name: Build and publish package to GitHub Packages
+      - name: Configure maven settings.xml
         run: |
           mkdir -p ~/.m2
           cat <<EOF > ~/.m2/settings.xml
