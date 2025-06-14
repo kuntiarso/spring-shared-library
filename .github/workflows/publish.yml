@@ -23,4 +23,17 @@ jobs:
           distribution: temurin
 
       - name: Build and publish package to GitHub Packages
-        run: mvn clean deploy -DskipTests -s .github/settings.xml
+        run: |
+          mkdir -p ~/.m2
+          cat <<EOF > ~/.m2/settings.xml
+          <settings>
+            <servers>
+              <server>
+                <id>github</id>
+                <username>${{ github.actor }}</username>
+                <password>${{ github.token }}</password>
+              </server>
+            </servers>
+          </settings>
+          EOF
+          mvn clean deploy -DskipTests
