@@ -10,7 +10,7 @@ permissions:
   packages: write
 
 jobs:
-  deploy:
+  publish:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
@@ -23,13 +23,13 @@ jobs:
           distribution: temurin
 
       - name: Install xml util tools
-        run: sudo apt install -y libxml2-utils
+        run: sudo apt install -y xmlstarlet
 
       - name: Extract maven package name from pom.xml
         id: extract
         run: |
-          GROUP_ID=$(xmllint --xpath "string(//project/groupId)" pom.xml)
-          ARTIFACT_ID=$(xmllint --xpath "string(//project/artifactId)" pom.xml)
+          GROUP_ID=$(xmlstarlet sel -N x="http://maven.apache.org/POM/4.0.0" -t -v "/x:project/x:groupId" pom.xml)
+          ARTIFACT_ID=$(xmlstarlet sel -N x="http://maven.apache.org/POM/4.0.0" -t -v "/x:project/x:artifactId" pom.xml)
           PACKAGE_NAME="${GROUP_ID}.${ARTIFACT_ID}"
           echo "Maven package name is: $PACKAGE_NAME"
           echo "PACKAGE_NAME=$PACKAGE_NAME" >> $GITHUB_ENV
