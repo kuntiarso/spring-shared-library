@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.developer.superuser</groupId>
     <artifactId>shared-library</artifactId>
-    <version>latest</version>
+    <version>1.0.0</version>
     <name>shared-library</name>
     <description>Shared library module for spring microservices that includes custom configuration, common logic, jpa
         auditing, etc.

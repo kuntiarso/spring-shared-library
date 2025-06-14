@@ -40,17 +40,17 @@ jobs:
           VERSION_ID=$(curl -s -H "Authorization: Bearer ${{ secrets.GH_PACKAGE_PAT }}" \
             -H "Accept: application/vnd.github.v3+json" \
             "https://api.github.com/users/${{ github.repository_owner }}/packages/maven/${{ env.PACKAGE_NAME }}/versions" \
-            | jq '.[] | select(.name=="latest") | .id')
+            | jq '.[] | select(.name=="1.0.0") | .id')
           
           if [ -n "$VERSION_ID" ]; then
-            echo "Found existing 'latest' version with ID: $VERSION_ID. Deleting..."
+            echo "Found existing '1.0.0' version with ID: $VERSION_ID. Deleting..."
             curl -X DELETE \
               -H "Authorization: Bearer ${{ secrets.GH_PACKAGE_PAT }}" \
               -H "Accept: application/vnd.github.v3+json" \
               "https://api.github.com/users/${{ github.repository_owner }}/packages/maven/${{ env.PACKAGE_NAME }}"
-            echo "Deleted previous 'latest' version."
+            echo "Deleted previous '1.0.0' version."
           else
-            echo "No existing 'latest' version found. Skipping deletion."
+            echo "No existing '1.0.0' version found. Skipping deletion."
           fi
 
       - name: Configure maven settings.xml
