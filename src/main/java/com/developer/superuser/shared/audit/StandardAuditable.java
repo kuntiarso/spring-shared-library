@@ -8,7 +8,7 @@ import java.time.Instant;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor(access = AccessLevel.PRIVATE)
+@AllArgsConstructor 
 @SuperBuilder
 @EqualsAndHashCode(callSuper = false)
 @ToString(callSuper = true)
