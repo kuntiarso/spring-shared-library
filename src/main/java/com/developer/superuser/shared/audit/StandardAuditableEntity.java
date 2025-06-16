@@ -4,8 +4,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.EntityListeners;
 import jakarta.persistence.MappedSuperclass;
 import jakarta.persistence.Version;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import lombok.experimental.SuperBuilder;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
@@ -15,12 +14,16 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.Instant;
 
-@Getter
-@Setter
-@SuperBuilder(toBuilder = true)
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
-public class StandardAuditableEntity {
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
+@SuperBuilder(toBuilder = true)
+@EqualsAndHashCode(callSuper = false)
+@ToString(callSuper = true)
+public abstract class StandardAuditableEntity {
     @CreatedDate
     @Column(name = "created_at", nullable = false, updatable = false)
     private Instant createdAt;

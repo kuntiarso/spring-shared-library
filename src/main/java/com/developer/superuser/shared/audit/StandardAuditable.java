@@ -10,9 +10,9 @@ import java.time.Instant;
 @NoArgsConstructor
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @SuperBuilder(toBuilder = true)
-@EqualsAndHashCode
-@ToString
-public class StandardAuditable {
+@EqualsAndHashCode(callSuper = false)
+@ToString(callSuper = true)
+public abstract class StandardAuditable {
     private Instant createdAt;
     private String createdBy;
     private Instant updatedAt;
