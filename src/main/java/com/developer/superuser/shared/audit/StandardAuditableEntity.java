@@ -21,7 +21,7 @@ import java.time.Instant;
 @NoArgsConstructor
 @AllArgsConstructor
 @SuperBuilder(toBuilder = true, setterPrefix = "set")
-@EqualsAndHashCode(callSuper = false)
+@EqualsAndHashCode
 @ToString(callSuper = true)
 public abstract class StandardAuditableEntity {
     @CreatedDate
