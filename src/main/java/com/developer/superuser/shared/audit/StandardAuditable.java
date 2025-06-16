@@ -9,7 +9,7 @@ import java.time.Instant;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
-@SuperBuilder(toBuilder = true)
+@SuperBuilder
 @EqualsAndHashCode(callSuper = false)
 @ToString(callSuper = true)
 public abstract class StandardAuditable {
