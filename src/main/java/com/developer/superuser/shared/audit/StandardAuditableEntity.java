@@ -6,6 +6,7 @@ import jakarta.persistence.MappedSuperclass;
 import jakarta.persistence.Version;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.experimental.SuperBuilder;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
@@ -16,6 +17,7 @@ import java.time.Instant;
 
 @Getter
 @Setter
+@SuperBuilder(toBuilder = true)
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
 public class StandardAuditableEntity {
