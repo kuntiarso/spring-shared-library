@@ -1,6 +1,7 @@
 package com.developer.superuser.shared.audit;
 
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 import java.time.Instant;
 
@@ -8,7 +9,7 @@ import java.time.Instant;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
-@Builder(toBuilder = true)
+@SuperBuilder(toBuilder = true)
 @EqualsAndHashCode
 @ToString
 public class StandardAuditable {
