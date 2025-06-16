@@ -20,7 +20,7 @@ import java.time.Instant;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@SuperBuilder(toBuilder = true, setterPrefix = "with")
+@SuperBuilder(toBuilder = true, setterPrefix = "set")
 @EqualsAndHashCode(callSuper = false)
 @ToString(callSuper = true)
 public abstract class StandardAuditableEntity {
