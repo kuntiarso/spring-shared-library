@@ -20,36 +20,36 @@ import java.time.Instant;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@SuperBuilder(toBuilder = true)
+@SuperBuilder(toBuilder = true, setterPrefix = "with")
 @EqualsAndHashCode(callSuper = false)
 @ToString(callSuper = true)
 public abstract class StandardAuditableEntity {
     @CreatedDate
     @Column(name = "created_at", nullable = false, updatable = false)
-    private Instant createdAt;
+    protected Instant createdAt;
 
     @CreatedBy
     @Column(name = "created_by", nullable = false, updatable = false, length = 100)
-    private String createdBy;
+    protected String createdBy;
 
     @LastModifiedDate
     @Column(name = "updated_at", nullable = false)
-    private Instant updatedAt;
+    protected Instant updatedAt;
 
     @LastModifiedBy
     @Column(name = "updated_by", nullable = false, length = 100)
-    private String updatedBy;
+    protected String updatedBy;
 
     @Column(name = "deleted", nullable = false)
-    private boolean deleted = false;
+    protected boolean deleted = false;
 
     @Column(name = "deleted_at")
-    private Instant deletedAt;
+    protected Instant deletedAt;
 
     @Column(name = "deleted_by", length = 100)
-    private String deletedBy;
+    protected String deletedBy;
 
     @Version
     @Column(name = "version", nullable = false)
-    private Long version;
+    protected Long version;
 }
