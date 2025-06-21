@@ -1,7 +1,10 @@
 package com.developer.superuser.shared.embedding;
 
+import com.developer.superuser.shared.enumeration.Currency;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 
@@ -16,9 +19,10 @@ import java.math.BigDecimal;
 @EqualsAndHashCode
 @ToString(callSuper = true)
 public class Amount {
-    @Column(name = "value", nullable = false, precision = 19, scale = 2)
+    @Column(name = "value", precision = 19, scale = 2)
     private BigDecimal value;
 
-    @Column(name = "currency", nullable = false, length = 3)
-    private String currency;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "currency", length = 3)
+    private Currency currency;
 }

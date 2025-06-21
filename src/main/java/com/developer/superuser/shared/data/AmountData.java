@@ -1,5 +1,6 @@
 package com.developer.superuser.shared.data;
 
+import com.developer.superuser.shared.enumeration.Currency;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 
@@ -14,5 +15,5 @@ import java.math.BigDecimal;
 @ToString(callSuper = true)
 public class AmountData {
     private BigDecimal value;
-    private String currency;
+    private Currency currency;
 }

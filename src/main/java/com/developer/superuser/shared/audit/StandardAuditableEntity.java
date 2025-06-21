@@ -25,23 +25,23 @@ import java.time.Instant;
 @ToString(callSuper = true)
 public abstract class StandardAuditableEntity {
     @CreatedDate
-    @Column(name = "created_at", nullable = false, updatable = false)
+    @Column(name = "created_at", updatable = false)
     protected Instant createdAt;
 
     @CreatedBy
-    @Column(name = "created_by", nullable = false, updatable = false, length = 100)
+    @Column(name = "created_by", updatable = false, length = 100)
     protected String createdBy;
 
     @LastModifiedDate
-    @Column(name = "updated_at", nullable = false)
+    @Column(name = "updated_at")
     protected Instant updatedAt;
 
     @LastModifiedBy
-    @Column(name = "updated_by", nullable = false, length = 100)
+    @Column(name = "updated_by", length = 100)
     protected String updatedBy;
 
-    @Column(name = "deleted", nullable = false)
-    protected boolean deleted = false;
+    @Column(name = "deleted")
+    protected boolean deleted;
 
     @Column(name = "deleted_at")
     protected Instant deletedAt;
