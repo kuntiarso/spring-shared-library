@@ -13,5 +13,7 @@ import lombok.experimental.SuperBuilder;
 public class ResponseData<A> {
     private String code;
     private String message;
+    private String service;
+    private String endpoint;
     private A body;
 }
