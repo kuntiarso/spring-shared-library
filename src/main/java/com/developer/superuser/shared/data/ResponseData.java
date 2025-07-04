@@ -23,7 +23,19 @@ public class ResponseData<A> {
     }
 
     public static <A> ResponseData<A> success(A body) {
-        return new ResponseData<>("SUCCESS", "Successful", Instant.now().toString(), body);
+        return success("200", body);
+    }
+
+    public static <A> ResponseData<A> success(String code, A body) {
+        return success(code, "Operation successful", body);
+    }
+
+    public static <A> ResponseData<A> success(String code, String message, A body) {
+        return new ResponseData<>(code, message, Instant.now().toString(), body);
+    }
+
+    public static <A> ResponseData<A> error(String code) {
+        return error(code, "An unexpected error occurred");
     }
 
     public static <A> ResponseData<A> error(String code, String message) {
