@@ -1,10 +1,7 @@
 package com.developer.superuser.shared.data;
 
-import com.developer.superuser.shared.utility.Dates;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
-
-import java.time.Instant;
 
 @Getter
 @Setter
@@ -16,7 +13,6 @@ import java.time.Instant;
 public class ResponseData<A> {
     private String code;
     private String message;
-    private String timestamp;
     private A body;
 
     public static <A> ResponseData<A> success() {
@@ -32,7 +28,7 @@ public class ResponseData<A> {
     }
 
     public static <A> ResponseData<A> success(String code, String message, A body) {
-        return new ResponseData<>(code, message, Dates.instantToString(Instant.now()), body);
+        return new ResponseData<>(code, message, body);
     }
 
     public static <A> ResponseData<A> error(String code) {
@@ -52,6 +48,6 @@ public class ResponseData<A> {
     }
 
     public static <A> ResponseData<A> error(String code, String message, A body) {
-        return new ResponseData<>(code, message, Dates.instantToString(Instant.now()), body);
+        return new ResponseData<>(code, message, body);
     }
 }
