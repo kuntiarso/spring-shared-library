@@ -13,15 +13,15 @@ import java.time.format.DateTimeFormatter;
 public class Dates {
     public Instant getInstantNow() {
         SharedConfigProperties sharedConfig = SpringContext.getContext().getBean(SharedConfigProperties.class);
-        ZoneId asiaJakartaZone = ZoneId.of(sharedConfig.getDateTime().getZone());
-        ZonedDateTime currentDateTime = Instant.now().atZone(asiaJakartaZone);
+        ZoneId zoneId = ZoneId.of(sharedConfig.getDateTime().getZone());
+        ZonedDateTime currentDateTime = Instant.now().atZone(zoneId);
         return currentDateTime.toInstant();
     }
 
     public String instantToString(Instant dateTime) {
         SharedConfigProperties sharedConfig = SpringContext.getContext().getBean(SharedConfigProperties.class);
-        ZoneId asiaJakartaZone = ZoneId.of(sharedConfig.getDateTime().getZone());
-        ZonedDateTime zonedDateTime = dateTime.atZone(asiaJakartaZone);
+        ZoneId zoneId = ZoneId.of(sharedConfig.getDateTime().getZone());
+        ZonedDateTime zonedDateTime = dateTime.atZone(zoneId);
         return zonedDateTime.format(DateTimeFormatter.ofPattern(sharedConfig.getDateTime().getFormat()));
     }
 }
