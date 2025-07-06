@@ -38,8 +38,16 @@ public class ResponseData<A> {
         return error(code, "An unexpected error occurred");
     }
 
+    public static <A> ResponseData<A> error(A body) {
+        return error("500", body);
+    }
+
     public static <A> ResponseData<A> error(String code, String message) {
         return error(code, message, null);
+    }
+
+    public static <A> ResponseData<A> error(String code, A body) {
+        return error(code, "An unexpected error occurred", body);
     }
 
     public static <A> ResponseData<A> error(String code, String message, A body) {
