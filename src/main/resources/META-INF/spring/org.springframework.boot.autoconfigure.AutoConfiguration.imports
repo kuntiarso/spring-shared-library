@@ -1,2 +1,3 @@
 com.developer.superuser.shared.config.GlobalConfig
 com.developer.superuser.shared.config.JpaConfig
+com.developer.superuser.shared.config.JacksonConfig
