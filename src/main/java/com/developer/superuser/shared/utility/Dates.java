@@ -18,6 +18,12 @@ public class Dates {
         return zonedDateTime.toInstant();
     }
 
+    public Instant toInstant(String instantString) {
+        SharedConfigProperties sharedConfig = SpringContext.getContext().getBean(SharedConfigProperties.class);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(sharedConfig.getDateTime().getFormat()).withZone(ZoneId.of(sharedConfig.getDateTime().getZone()));
+        return ZonedDateTime.parse(instantString, formatter).toInstant();
+    }
+
     public String toInstantString(Instant instant) {
         SharedConfigProperties sharedConfig = SpringContext.getContext().getBean(SharedConfigProperties.class);
         ZoneId zoneId = ZoneId.of(sharedConfig.getDateTime().getZone());
