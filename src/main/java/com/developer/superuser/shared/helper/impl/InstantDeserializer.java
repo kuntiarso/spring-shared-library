@@ -18,10 +18,10 @@ public class InstantDeserializer extends JsonDeserializer<Instant> {
     private final SharedConfigProperties sharedConfig;
 
     @Override
-    public Instant deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException, JacksonException {
+    public Instant deserialize(JsonParser parser, DeserializationContext context) throws IOException {
         DateTimeFormatter formatter = DateTimeFormatter
                 .ofPattern(sharedConfig.getDateTime().getFormat())
                 .withZone(ZoneId.of(sharedConfig.getDateTime().getZone()));
-        return ZonedDateTime.parse(jsonParser.getText(), formatter).toInstant();
+        return ZonedDateTime.parse(parser.getText(), formatter).toInstant();
     }
 }

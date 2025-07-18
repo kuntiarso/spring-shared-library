@@ -16,11 +16,11 @@ public class InstantSerializer extends JsonSerializer<Instant> {
     public final SharedConfigProperties sharedConfig;
 
     @Override
-    public void serialize(Instant instant, JsonGenerator jsonGenerator, SerializerProvider serializerProvider) throws IOException {
+    public void serialize(Instant value, JsonGenerator gen, SerializerProvider serializer) throws IOException {
         String instantString = DateTimeFormatter
                 .ofPattern(sharedConfig.getDateTime().getFormat())
                 .withZone(ZoneId.of(sharedConfig.getDateTime().getZone()))
-                .format(instant);
-        jsonGenerator.writeString(instantString);
+                .format(value);
+        gen.writeString(instantString);
     }
 }
