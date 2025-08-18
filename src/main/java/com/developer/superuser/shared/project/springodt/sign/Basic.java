@@ -7,21 +7,21 @@ import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 
 import java.security.PrivateKey;
-import java.time.Instant;
 
 @RequiredArgsConstructor
-public class Basic implements Generator<Void, String> {
+public class Basic implements Generator<Sign, Sign> {
     private final String clientId;
     private final String algorithm;
     private final PrivateKey privateKey;
 
     @Override
     @SneakyThrows
-    public String generate(Void unused) {
-        return Hashes.withRsaSha(build(), privateKey, algorithm);
+    public Sign generate(Sign sign) {
+        String signature = Hashes.withRsaSha(build(sign), privateKey, algorithm);
+        return sign.toBuilder().setSignature(signature).build();
     }
 
-    private String build() {
-        return clientId + "|" + Dates.toInstantString(Instant.now());
+    private String build(Sign sign) {
+        return clientId + "|" + Dates.toInstantString(sign.getTimestamp());
     }
 }
