@@ -12,6 +12,7 @@ import java.time.Instant;
 @EqualsAndHashCode
 @ToString
 public class Sign {
+    private String clientId;
     private String requestId;
     private String httpMethod;
     private String endpoint;

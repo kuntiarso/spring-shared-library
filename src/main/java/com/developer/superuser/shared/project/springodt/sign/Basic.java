@@ -10,7 +10,6 @@ import java.security.PrivateKey;
 
 @RequiredArgsConstructor
 public class Basic implements Generator<Sign, Sign> {
-    private final String clientId;
     private final String algorithm;
     private final PrivateKey privateKey;
 
@@ -22,6 +21,6 @@ public class Basic implements Generator<Sign, Sign> {
     }
 
     private String build(Sign sign) {
-        return clientId + "|" + Dates.toInstantString(sign.getTimestamp());
+        return sign.getClientId() + "|" + Dates.toInstantString(sign.getTimestamp());
     }
 }
