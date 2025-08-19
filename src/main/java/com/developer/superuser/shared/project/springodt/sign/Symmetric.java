@@ -22,10 +22,12 @@ public class Symmetric implements Generator<Sign, Sign> {
     }
 
     private void precheck(Sign sign) {
+        Preconditions.checkNotNull(sign, "sign must not be null");
         Preconditions.checkArgument(!Strings.isNullOrEmpty(sign.getHttpMethod()), "httpMethod must not be null or empty");
         Preconditions.checkArgument(!Strings.isNullOrEmpty(sign.getEndpoint()), "endpoint must not be null or empty");
         Preconditions.checkArgument(!Strings.isNullOrEmpty(sign.getToken()), "token must not be null or empty");
         Preconditions.checkArgument(!Strings.isNullOrEmpty(sign.getDigest()), "digest must not be null or empty");
+        Preconditions.checkNotNull(sign.getTimestamp(), "timestamp must not be null");
     }
 
     private String build(Sign sign) {
