@@ -1,0 +1,29 @@
+openapi: 3.0.3
+info:
+  title: Additional Setting Data Schema
+  version: 1.0.0
+paths: { }
+components:
+  schemas:
+    AdditionalSettingData:
+      type: object
+      properties:
+        reusableStatus:
+          type: boolean
+          example: true
+          description: Whether the VA is reusable
+        minAmount:
+          type: number
+          format: double
+          minimum: 0.01
+          maximum: 99999999999999999.99
+          example: "1000.00"
+          description: Minimum allowed transaction amount (BigDecimal, max 17 digits, 2 decimals)
+        maxAmount:
+          type: number
+          format: double
+          minimum: 0.01
+          maximum: 99999999999999999.99
+          example: "1000000.00"
+          description: Maximum allowed transaction amount (BigDecimal, max 17 digits, 2 decimals)
+      required: [ reusableStatus ]

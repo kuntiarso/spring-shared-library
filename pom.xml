@@ -54,6 +54,15 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
+        <dependency>
+            <groupId>jakarta.validation</groupId>
+            <artifactId>jakarta.validation-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.swagger.core.v3</groupId>
+            <artifactId>swagger-annotations</artifactId>
+            <version>2.2.36</version>
+        </dependency>
 
         <dependency>
             <groupId>com.google.guava</groupId>
@@ -73,7 +82,8 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <optional>true</optional>
+            <optional>false</optional>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -101,6 +111,65 @@
                         </path>
                     </annotationProcessorPaths>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.openapitools</groupId>
+                <artifactId>openapi-generator-maven-plugin</artifactId>
+                <version>7.14.0</version>
+                <executions>
+                    <execution>
+                        <id>generate-openapi-contract</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <inputSpec>${project.basedir}/src/main/resources/openapi/springodt/schema/master.yaml
+                            </inputSpec>
+                            <generatorName>spring</generatorName>
+                            <generateApiDocumentation>false</generateApiDocumentation>
+                            <generateApis>false</generateApis>
+                            <generateSupportingFiles>false</generateSupportingFiles>
+                            <generateApiTests>false</generateApiTests>
+                            <generateModelTests>false</generateModelTests>
+                            <skipIfSpecIsUnchanged>true</skipIfSpecIsUnchanged>
+                            <modelPackage>${project.groupId}.shared.openapi.contract</modelPackage>
+                            <configOptions>
+                                <useSwaggerAnnotations>false</useSwaggerAnnotations>
+                                <useSpringBoot3>true</useSpringBoot3>
+                                <useJakartaEe>true</useJakartaEe>
+                                <useOptional>true</useOptional>
+                                <useBeanValidation>true</useBeanValidation>
+                                <serializationLibrary>jackson</serializationLibrary>
+                                <openApiNullable>false</openApiNullable>
+                                <dateLibrary>java8</dateLibrary>
+                                <interfaceOnly>true</interfaceOnly>
+                                <hideGenerationTimestamp>true</hideGenerationTimestamp>
+                                <hateoas>false</hateoas>
+                                <library>spring-boot</library>
+                                <generatedConstructorWithRequiredArgs>false</generatedConstructorWithRequiredArgs>
+                                <additionalModelTypeAnnotations>
+                                    @lombok.Getter
+                                    @lombok.Setter
+                                    @lombok.NoArgsConstructor
+                                    @lombok.AllArgsConstructor
+                                    @lombok.experimental.SuperBuilder(toBuilder = true, setterPrefix = "set")
+                                    @lombok.EqualsAndHashCode
+                                    @lombok.ToString
+                                    @com.fasterxml.jackson.annotation.JsonInclude(com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL)
+                                </additionalModelTypeAnnotations>
+                            </configOptions>
+                            <typeMappings>
+                                <typeMapping>double=BigDecimal</typeMapping>
+                                <typeMapping>instant=Instant</typeMapping>
+                            </typeMappings>
+                            <importMappings>
+                                <importMapping>BigDecimal=java.math.BigDecimal</importMapping>
+                                <importMapping>Instant=java.time.Instant</importMapping>
+                            </importMappings>
+                            <output>${project.build.directory}/generated-sources/openapi</output>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

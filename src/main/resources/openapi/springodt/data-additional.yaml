@@ -1,0 +1,21 @@
+openapi: 3.0.3
+info:
+  title: Additional Data Schema
+  version: 1.0.0
+paths: { }
+components:
+  schemas:
+    AdditionalData:
+      type: object
+      properties:
+        channel:
+          $ref: './type-channel.yaml#/components/schemas/Channel'
+        howToPayPage:
+          type: string
+          example: https://example.com/how-to-pay
+        howToPayApi:
+          type: string
+          example: https://api.example.com/how-to-pay
+        virtualAccountConfig:
+          $ref: './data-additional-setting.yaml#/components/schemas/AdditionalSettingData'
+      required: [ channel ]

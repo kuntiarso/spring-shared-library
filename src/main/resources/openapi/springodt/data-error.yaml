@@ -1,0 +1,24 @@
+openapi: 3.0.3
+info:
+  title: Error Data Schema
+  version: 1.0.0
+paths: { }
+components:
+  schemas:
+    ErrorData:
+      type: object
+      description: Common error structure
+      properties:
+        status:
+          type: string
+          description: HttpStatus (e.g. BAD_REQUEST, UNAUTHORIZED, etc.)
+          example: BAD_REQUEST
+        responseCode:
+          type: string
+          description: Numeric HTTP status code
+          example: "400"
+        responseMessage:
+          type: string
+          description: Optional error message
+          example: Invalid request
+      required: [ status, responseCode ]

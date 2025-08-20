@@ -1,0 +1,14 @@
+openapi: 3.0.3
+info:
+  title: Transaction Type Schema
+  version: 1.0.0
+paths: { }
+components:
+  schemas:
+    TransactionType:
+      type: string
+      enum: [ C, O ]
+      description: |
+        C = Closed Amount
+        O = Open Amount
+      example: C

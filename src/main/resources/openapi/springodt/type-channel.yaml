@@ -1,0 +1,11 @@
+openapi: 3.0.3
+info:
+  title: Channel Type Schema
+  version: 1.0.0
+paths: { }
+components:
+  schemas:
+    Channel:
+      type: string
+      enum: [ VIRTUAL_ACCOUNT_BANK_CIMB ]
+      example: VIRTUAL_ACCOUNT_BANK_CIMB

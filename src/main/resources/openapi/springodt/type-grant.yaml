@@ -1,0 +1,11 @@
+openapi: 3.0.3
+info:
+  title: Grant Type Schema
+  version: 1.0.0
+paths: { }
+components:
+  schemas:
+    GrantType:
+      type: string
+      enum: [ CLIENT_CREDENTIALS, AUTHORIZATION_CODE ]
+      example: CLIENT_CREDENTIALS

@@ -1,0 +1,20 @@
+openapi: 3.0.3
+info:
+  title: Header Data Schema
+  version: 1.0.0
+paths: { }
+components:
+  schemas:
+    HeaderData:
+      type: object
+      properties:
+        clientId:
+          type: string
+          example: my-client
+        tokenScheme:
+          type: string
+          example: Bearer
+        token:
+          type: string
+          example: eyJhbGciOi...
+      required: [ clientId, tokenScheme, token ]

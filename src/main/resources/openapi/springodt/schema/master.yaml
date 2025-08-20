@@ -1,0 +1,36 @@
+openapi: 3.0.3
+info:
+  title: Contract API(s) Master
+  version: 1.0.0
+paths: { }
+components:
+  schemas:
+    # api(s)
+    TokenRequestData:
+      $ref: '../api-token.yaml#/components/schemas/TokenRequestData'
+    TokenResponseData:
+      $ref: '../api-token.yaml#/components/schemas/TokenResponseData'
+    VaRequestData:
+      $ref: '../api-va.yaml#/components/schemas/VaRequestData'
+    VaResponseData:
+      $ref: '../api-va.yaml#/components/schemas/VaResponseData'
+    # data(s)
+    AdditionalData:
+      $ref: '../data-additional.yaml#/components/schemas/AdditionalData'
+    AdditionalSettingData:
+      $ref: '../data-additional-setting.yaml#/components/schemas/AdditionalSettingData'
+    AmountData:
+      $ref: '../data-amount.yaml#/components/schemas/AmountData'
+    ErrorData:
+      $ref: '../data-error.yaml#/components/schemas/ErrorData'
+    HeaderData:
+      $ref: '../data-header.yaml#/components/schemas/HeaderData'
+    # type(s)
+    Channel:
+      $ref: '../type-channel.yaml#/components/schemas/Channel'
+    GrantType:
+      $ref: '../type-grant.yaml#/components/schemas/GrantType'
+    TokenType:
+      $ref: '../type-token.yaml#/components/schemas/TokenType'
+    TransactionType:
+      $ref: '../type-transaction.yaml#/components/schemas/TransactionType'

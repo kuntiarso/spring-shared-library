@@ -1,0 +1,26 @@
+openapi: 3.0.3
+info:
+  title: Amount Data Schema
+  version: 1.0.0
+paths: { }
+components:
+  schemas:
+    AmountData:
+      type: object
+      properties:
+        value:
+          type: number
+          format: double
+          minimum: 0.00
+          maximum: 99999999999999999.99
+          example: "100000.00"
+          description: >
+            BigDecimal amount value. Must be greater than 0, with max 17 integer digits and 2 decimal places.
+        currency:
+          type: string
+          minLength: 3
+          maxLength: 3
+          pattern: '^[A-Z]{3}$'
+          example: "IDR"
+          description: Currency code (ISO 4217, 3 uppercase letters)
+      required: [ value, currency ]

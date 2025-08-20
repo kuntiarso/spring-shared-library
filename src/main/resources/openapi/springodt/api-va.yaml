@@ -1,0 +1,53 @@
+openapi: 3.0.3
+info:
+  title: Virtual Account API
+  version: 1.0.0
+paths: { }
+components:
+  schemas:
+    VaRequestData:
+      type: object
+      properties:
+        header:
+          $ref: './data-header.yaml#/components/schemas/HeaderData'
+        paymentId:
+          type: string
+          example: PAY12345
+        partnerId:
+          type: string
+          example: PARTNER01
+        customerNo:
+          type: string
+          example: CUST001
+        vaNo:
+          type: string
+          example: 1234567890123456
+        vaName:
+          type: string
+          example: John Doe
+        billedAmount:
+          $ref: './data-amount.yaml#/components/schemas/AmountData'
+        transactionType:
+          $ref: './type-transaction.yaml#/components/schemas/TransactionType'
+        additional:
+          $ref: './data-additional.yaml#/components/schemas/AdditionalData'
+      required:
+        [ header, paymentId, partnerId, customerNo, vaNo, vaName, billedAmount, transactionType, additional ]
+    VaResponseData:
+      type: object
+      properties:
+        paymentId:
+          type: string
+          example: PAY12345
+        vaNo:
+          type: string
+          example: 1234567890123456
+        billedAmount:
+          $ref: './data-amount.yaml#/components/schemas/AmountData'
+        additional:
+          $ref: './data-additional.yaml#/components/schemas/AdditionalData'
+        expiredDate:
+          type: string
+          format: instant
+          example: "2025-08-21T00:00:00Z"
+      required: [ paymentId, vaNo, billedAmount, expiredDate ]

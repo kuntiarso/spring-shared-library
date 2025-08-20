@@ -1,0 +1,46 @@
+openapi: 3.0.3
+info:
+  title: Token API
+  version: 1.0.0
+paths: { }
+components:
+  schemas:
+    TokenRequestData:
+      type: object
+      properties:
+        clientId:
+          type: string
+          example: my-client-id
+        tokenType:
+          $ref: './type-token.yaml#/components/schemas/TokenType'
+        grantType:
+          $ref: './type-grant.yaml#/components/schemas/GrantType'
+      required: [ clientId, tokenType, grantType ]
+    TokenResponseData:
+      type: object
+      properties:
+        tokenScheme:
+          type: string
+          example: Bearer
+        accessToken:
+          type: string
+          example: eyJhbGciOiJIUzI1NiIsInR...
+        accessTokenExpiryTime:
+          type: string
+          format: instant
+          example: "2025-08-20T12:00:00Z"
+        refreshToken:
+          type: string
+          example: eyJhbGciOiJIUzI1NiIsInR...
+        refreshTokenExpiryTime:
+          type: string
+          format: instant
+          example: "2025-08-27T12:00:00Z"
+        expiresIn:
+          type: integer
+          example: 3600
+        additionalInfo:
+          type: string
+          example: Some metadata here
+        error:
+          $ref: './data-error.yaml#/components/schemas/ErrorData'
