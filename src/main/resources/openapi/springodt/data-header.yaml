@@ -11,10 +11,23 @@ components:
         clientId:
           type: string
           example: my-client
-        tokenScheme:
+        requestId:
           type: string
-          example: Bearer
+          example: 0000000001
+        channelId:
+          type: string
+          example: H2H
         token:
           type: string
           example: eyJhbGciOi...
-      required: [ clientId, tokenScheme, token ]
+        tokenScheme:
+          type: string
+          example: Bearer
+        signature:
+          type: string
+          example: e8757c8de...
+        timestamp:
+          type: string
+          format: instant
+          example: "2025-08-20T12:00:00Z"
+      required: [ clientId, token, tokenScheme ]
