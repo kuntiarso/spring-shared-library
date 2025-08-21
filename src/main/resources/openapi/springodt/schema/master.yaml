@@ -6,14 +6,14 @@ paths: { }
 components:
   schemas:
     # api(s)
-    TokenRequestData:
-      $ref: '../api-token.yaml#/components/schemas/TokenRequestData'
-    TokenResponseData:
-      $ref: '../api-token.yaml#/components/schemas/TokenResponseData'
-    VaRequestData:
-      $ref: '../api-va.yaml#/components/schemas/VaRequestData'
-    VaResponseData:
-      $ref: '../api-va.yaml#/components/schemas/VaResponseData'
+    TokenRequest:
+      $ref: '../api-token.yaml#/components/schemas/TokenRequest'
+    TokenResponse:
+      $ref: '../api-token.yaml#/components/schemas/TokenResponse'
+    VaRequest:
+      $ref: '../api-va.yaml#/components/schemas/VaRequest'
+    VaResponse:
+      $ref: '../api-va.yaml#/components/schemas/VaResponse'
     # data(s)
     AdditionalData:
       $ref: '../data-additional.yaml#/components/schemas/AdditionalData'

@@ -142,11 +142,12 @@
                                 <serializationLibrary>jackson</serializationLibrary>
                                 <openApiNullable>false</openApiNullable>
                                 <dateLibrary>java8</dateLibrary>
-                                <interfaceOnly>true</interfaceOnly>
+                                <interfaceOnly>false</interfaceOnly>
                                 <hideGenerationTimestamp>true</hideGenerationTimestamp>
                                 <hateoas>false</hateoas>
                                 <library>spring-boot</library>
                                 <generatedConstructorWithRequiredArgs>false</generatedConstructorWithRequiredArgs>
+                                <lombokBuilderDefault>true</lombokBuilderDefault>
                                 <additionalModelTypeAnnotations>
                                     @lombok.Getter
                                     @lombok.Setter

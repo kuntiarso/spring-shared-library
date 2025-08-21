@@ -5,7 +5,7 @@ info:
 paths: { }
 components:
   schemas:
-    VaRequestData:
+    VaRequest:
       type: object
       properties:
         header:
@@ -33,7 +33,7 @@ components:
           $ref: './data-additional.yaml#/components/schemas/AdditionalData'
       required:
         [ header, paymentId, partnerId, customerNo, vaNo, vaName, billedAmount, transactionType, additional ]
-    VaResponseData:
+    VaResponse:
       type: object
       properties:
         paymentId:
