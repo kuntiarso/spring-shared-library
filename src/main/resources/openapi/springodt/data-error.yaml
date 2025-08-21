@@ -9,10 +9,6 @@ components:
       type: object
       description: Common error structure
       properties:
-        status:
-          type: string
-          description: HttpStatus (e.g. BAD_REQUEST, UNAUTHORIZED, etc.)
-          example: BAD_REQUEST
         responseCode:
           type: string
           description: Numeric HTTP status code
