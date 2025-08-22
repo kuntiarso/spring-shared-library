@@ -9,12 +9,16 @@ components:
       type: object
       description: Common error structure
       properties:
+        status:
+          type: integer
+          description: Numeric HTTP status code
+          example: 400
         responseCode:
           type: string
-          description: Numeric HTTP status code
-          example: "400"
+          description: Application error code
+          example: "40327 + case_code"
         responseMessage:
           type: string
-          description: Optional error message
+          description: Optional application error message
           example: Invalid request
       required: [ status, responseCode ]
