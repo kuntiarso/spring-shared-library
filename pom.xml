@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.5.0</version>
+        <version>3.5.5</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.developer.superuser</groupId>
@@ -55,8 +55,8 @@
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
         <dependency>
-            <groupId>jakarta.validation</groupId>
-            <artifactId>jakarta.validation-api</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
         </dependency>
         <dependency>
             <groupId>io.swagger.core.v3</groupId>
@@ -139,6 +139,11 @@
                                 <useJakartaEe>true</useJakartaEe>
                                 <useOptional>true</useOptional>
                                 <useBeanValidation>true</useBeanValidation>
+                                <useLombok>true</useLombok>
+                                <lombokAnnotations>true</lombokAnnotations>
+                                <useBuilder>true</useBuilder>
+                                <builderAnnotations>true</builderAnnotations>
+                                <lombokBuilderDefault>true</lombokBuilderDefault>
                                 <serializationLibrary>jackson</serializationLibrary>
                                 <openApiNullable>false</openApiNullable>
                                 <dateLibrary>java8</dateLibrary>
@@ -147,7 +152,6 @@
                                 <hateoas>false</hateoas>
                                 <library>spring-boot</library>
                                 <generatedConstructorWithRequiredArgs>false</generatedConstructorWithRequiredArgs>
-                                <lombokBuilderDefault>true</lombokBuilderDefault>
                                 <additionalModelTypeAnnotations>
                                     @lombok.Getter
                                     @lombok.Setter
