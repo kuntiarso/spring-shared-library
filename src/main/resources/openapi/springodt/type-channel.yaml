@@ -7,5 +7,16 @@ components:
   schemas:
     Channel:
       type: string
-      enum: [ VIRTUAL_ACCOUNT_BANK_CIMB ]
+      enum:
+        - VIRTUAL_ACCOUNT_BANK_CIMB
+        - VIRTUAL_ACCOUNT_BSI
+        - VIRTUAL_ACCOUNT_BCA
+        - VIRTUAL_ACCOUNT_BNC
+        - VIRTUAL_ACCOUNT_BNI
+        - VIRTUAL_ACCOUNT_BANK_MANDIRI
+        - VIRTUAL_ACCOUNT_BRI
+        - VIRTUAL_ACCOUNT_BTN
+        - VIRTUAL_ACCOUNT_BANK_PERMATA
+        - VIRTUAL_ACCOUNT_BANK_DANAMON
+        - VIRTUAL_ACCOUNT_BSS
       example: VIRTUAL_ACCOUNT_BANK_CIMB

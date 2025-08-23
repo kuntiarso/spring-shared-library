@@ -7,5 +7,5 @@ components:
   schemas:
     GrantType:
       type: string
-      enum: [ CLIENT_CREDENTIALS, AUTHORIZATION_CODE ]
-      example: CLIENT_CREDENTIALS
+      enum: [ client_credentials, authorization_code ]
+      example: client_credentials
