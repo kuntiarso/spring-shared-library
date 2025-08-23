@@ -1,5 +1,6 @@
 package com.developer.superuser.shared.data;
 
+import com.developer.superuser.shared.openapi.contract.ErrorData;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;
@@ -40,7 +41,9 @@ public class ResponseData<A> {
     }
 
     public static <A> ResponseData<A> error(A body) {
-        return error("500", body);
+        return body instanceof ErrorData err
+                ? error(err.getResponseCode(), err.getResponseMessage())
+                : error("500", body);
     }
 
     public static <A> ResponseData<A> error(String code, String message) {
