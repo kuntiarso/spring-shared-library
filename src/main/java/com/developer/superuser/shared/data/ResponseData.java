@@ -1,5 +1,7 @@
 package com.developer.superuser.shared.data;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 
@@ -10,6 +12,8 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder(toBuilder = true, setterPrefix = "set")
 @EqualsAndHashCode
 @ToString(callSuper = true)
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class ResponseData<A> {
     private String code;
     private String message;
