@@ -1,6 +1,6 @@
 openapi: 3.0.3
 info:
-  title: Contract API(s) Master
+  title: Master API Contract
   version: 1.0.0
 paths: { }
 components:
@@ -23,8 +23,7 @@ components:
       $ref: '../data-amount.yaml#/components/schemas/AmountData'
     ErrorData:
       $ref: '../data-error.yaml#/components/schemas/ErrorData'
-    HeaderData:
-      $ref: '../data-header.yaml#/components/schemas/HeaderData'
+
     # type(s)
     Channel:
       $ref: '../type-channel.yaml#/components/schemas/Channel'

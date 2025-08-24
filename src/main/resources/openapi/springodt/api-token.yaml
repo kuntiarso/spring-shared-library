@@ -10,12 +10,14 @@ components:
       properties:
         clientId:
           type: string
-          example: my-client-id
+          example: BRS-001-000...
+          x-field-extra-annotation: |
+            @jakarta.validation.constraints.NotNull(message = "paymentId must not be null")
+            @jakarta.validation.constraints.NotBlank(message = "paymentId must not be empty")
         tokenType:
           $ref: './type-token.yaml#/components/schemas/TokenType'
         grantType:
           $ref: './type-grant.yaml#/components/schemas/GrantType'
-      required: [ clientId, tokenType, grantType ]
     TokenResponse:
       type: object
       properties:

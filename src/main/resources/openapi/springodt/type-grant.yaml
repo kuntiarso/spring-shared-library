@@ -9,3 +9,5 @@ components:
       type: string
       enum: [ client_credentials, authorization_code ]
       example: client_credentials
+      x-field-extra-annotation: |
+        @jakarta.validation.constraints.NotNull(message = "grantType must not be null")

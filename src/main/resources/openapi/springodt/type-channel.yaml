@@ -20,3 +20,5 @@ components:
         - VIRTUAL_ACCOUNT_BANK_DANAMON
         - VIRTUAL_ACCOUNT_BSS
       example: VIRTUAL_ACCOUNT_BANK_CIMB
+      x-field-extra-annotation: |
+        @jakarta.validation.constraints.NotNull(message = "channel must not be null")

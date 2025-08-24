@@ -8,31 +8,68 @@ components:
     VaRequest:
       type: object
       properties:
-        header:
-          $ref: './data-header.yaml#/components/schemas/HeaderData'
+        clientId:
+          type: string
+          example: BRS-001-000...
+          x-field-extra-annotation: |
+            @jakarta.validation.constraints.NotNull(message = "paymentId must not be null")
+            @jakarta.validation.constraints.NotBlank(message = "paymentId must not be empty")
+        token:
+          type: string
+          example: eyJhbGciOi...
+          x-field-extra-annotation: |
+            @jakarta.validation.constraints.NotNull(message = "token must not be null")
+            @jakarta.validation.constraints.NotBlank(message = "token must not be empty")
+        tokenScheme:
+          type: string
+          example: Bearer
+          x-field-extra-annotation: |
+            @jakarta.validation.constraints.NotNull(message = "tokenScheme must not be null")
+            @jakarta.validation.constraints.NotBlank(message = "tokenScheme must not be empty")
         paymentId:
           type: string
           example: PAY12345
+          x-field-extra-annotation: |
+            @jakarta.validation.constraints.NotNull(message = "paymentId must not be null")
+            @jakarta.validation.constraints.NotBlank(message = "paymentId must not be empty")
         partnerId:
           type: string
           example: PARTNER01
+          x-field-extra-annotation: |
+            @jakarta.validation.constraints.NotNull(message = "partnerId must not be null")
+            @jakarta.validation.constraints.NotBlank(message = "partnerId must not be empty")
         customerNo:
           type: string
           example: CUST001
+          x-field-extra-annotation: |
+            @jakarta.validation.constraints.NotNull(message = "customerNo must not be null")
+            @jakarta.validation.constraints.NotBlank(message = "customerNo must not be empty")
         vaNo:
           type: string
           example: 1234567890123456
+          x-field-extra-annotation: |
+            @jakarta.validation.constraints.NotNull(message = "vaNo must not be null")
+            @jakarta.validation.constraints.NotBlank(message = "vaNo must not be empty")
         vaName:
           type: string
           example: John Doe
+          x-field-extra-annotation: |
+            @jakarta.validation.constraints.NotNull(message = "vaName must not be null")
+            @jakarta.validation.constraints.NotBlank(message = "vaName must not be empty")
         billedAmount:
-          $ref: './data-amount.yaml#/components/schemas/AmountData'
+          allOf:
+            - $ref: './data-amount.yaml#/components/schemas/AmountData'
+          x-field-extra-annotation: |
+            @jakarta.validation.Valid
+            @jakarta.validation.constraints.NotNull(message = "billedAmount must not be null")
         transactionType:
           $ref: './type-transaction.yaml#/components/schemas/TransactionType'
         additional:
-          $ref: './data-additional.yaml#/components/schemas/AdditionalData'
-      required:
-        [ header, paymentId, partnerId, customerNo, vaNo, vaName, billedAmount, transactionType, additional ]
+          allOf:
+            - $ref: './data-additional.yaml#/components/schemas/AdditionalData'
+          x-field-extra-annotation: |
+            @jakarta.validation.Valid
+            @jakarta.validation.constraints.NotNull(message = "additional must not be null")
     VaResponse:
       type: object
       properties:
@@ -50,4 +87,3 @@ components:
           type: string
           format: instant
           example: "2025-08-21T00:00:00Z"
-      required: [ paymentId, vaNo, billedAmount, expiredDate ]

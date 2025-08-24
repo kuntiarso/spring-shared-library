@@ -7,18 +7,17 @@ components:
   schemas:
     ErrorData:
       type: object
-      description: Common error structure
       properties:
         status:
           type: integer
-          description: Numeric HTTP status code
           example: 400
-        responseCode:
+        code:
           type: string
-          description: Application error code
           example: "40327 + case_code"
-        responseMessage:
+          x-field-extra-annotation: |
+            @com.fasterxml.jackson.annotation.JsonProperty("responseCode")
+        message:
           type: string
-          description: Optional application error message
-          example: Invalid request
-      required: [ status, responseCode ]
+          example: Unknown server error
+          x-field-extra-annotation: |
+            @com.fasterxml.jackson.annotation.JsonProperty("responseMessage")

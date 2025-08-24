@@ -16,8 +16,8 @@ public class Errors {
     public ErrorData ok(String code, String message) {
         return ErrorData.builder()
                 .setStatus(200)
-                .setResponseCode(code)
-                .setResponseMessage(message)
+                .setCode(code)
+                .setMessage(message)
                 .build();
     }
 
@@ -32,8 +32,8 @@ public class Errors {
     public ErrorData badRequest(String code, String message) {
         return ErrorData.builder()
                 .setStatus(400)
-                .setResponseCode(code)
-                .setResponseMessage(message)
+                .setCode(code)
+                .setMessage(message)
                 .build();
     }
 
@@ -48,8 +48,8 @@ public class Errors {
     public ErrorData internalServerError(String code, String message) {
         return ErrorData.builder()
                 .setStatus(500)
-                .setResponseCode(code)
-                .setResponseMessage(message)
+                .setCode(code)
+                .setMessage(message)
                 .build();
     }
 
@@ -64,8 +64,8 @@ public class Errors {
     public ErrorData error(Integer status, String code, String message) {
         return ErrorData.builder()
                 .setStatus(status)
-                .setResponseCode(code)
-                .setResponseMessage(message)
+                .setCode(code)
+                .setMessage(message)
                 .build();
     }
 }

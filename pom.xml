@@ -119,12 +119,14 @@
                 <executions>
                     <execution>
                         <id>generate-openapi-contract</id>
+                        <phase>generate-sources</phase>
                         <goals>
                             <goal>generate</goal>
                         </goals>
                         <configuration>
                             <inputSpec>${project.basedir}/src/main/resources/openapi/springodt/schema/master.yaml
                             </inputSpec>
+                            <output>${project.build.directory}/generated-sources/openapi</output>
                             <generatorName>spring</generatorName>
                             <generateApiDocumentation>false</generateApiDocumentation>
                             <generateApis>false</generateApis>
@@ -134,44 +136,40 @@
                             <skipIfSpecIsUnchanged>true</skipIfSpecIsUnchanged>
                             <modelPackage>${project.groupId}.shared.openapi.contract</modelPackage>
                             <configOptions>
-                                <useSwaggerAnnotations>false</useSwaggerAnnotations>
-                                <useSpringBoot3>true</useSpringBoot3>
+                                <developerName>Superuser</developerName>
+                                <developerEmail>gilang.grk17@gmail.com</developerEmail>
+                                <generatedConstructorWithRequiredArgs>false</generatedConstructorWithRequiredArgs>
+                                <openApiNullable>false</openApiNullable>
+                                <useBeanValidation>true</useBeanValidation>
+                                <useEnumCaseInsensitive>true</useEnumCaseInsensitive>
                                 <useJakartaEe>true</useJakartaEe>
                                 <useOptional>true</useOptional>
-                                <useBeanValidation>true</useBeanValidation>
-                                <useLombok>true</useLombok>
-                                <lombokAnnotations>true</lombokAnnotations>
-                                <useBuilder>true</useBuilder>
-                                <builderAnnotations>true</builderAnnotations>
-                                <lombokBuilderDefault>true</lombokBuilderDefault>
-                                <serializationLibrary>jackson</serializationLibrary>
-                                <openApiNullable>false</openApiNullable>
-                                <dateLibrary>java8</dateLibrary>
-                                <interfaceOnly>false</interfaceOnly>
-                                <hideGenerationTimestamp>true</hideGenerationTimestamp>
-                                <hateoas>false</hateoas>
-                                <library>spring-boot</library>
-                                <generatedConstructorWithRequiredArgs>false</generatedConstructorWithRequiredArgs>
+                                <useSealed>true</useSealed>
+                                <useSpringBoot3>true</useSpringBoot3>
+                                <performBeanValidation>true</performBeanValidation>
                                 <additionalModelTypeAnnotations>
                                     @lombok.Getter
                                     @lombok.Setter
                                     @lombok.NoArgsConstructor
-                                    @lombok.AllArgsConstructor
+                                    @lombok.AllArgsConstructor(access = lombok.AccessLevel.PRIVATE)
                                     @lombok.experimental.SuperBuilder(toBuilder = true, setterPrefix = "set")
                                     @lombok.EqualsAndHashCode
                                     @lombok.ToString
                                     @com.fasterxml.jackson.annotation.JsonInclude(com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL)
+                                    @com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown = true)
                                 </additionalModelTypeAnnotations>
+                                <additionalEnumTypeAnnotations>
+                                    @lombok.Getter
+                                </additionalEnumTypeAnnotations>
                             </configOptions>
                             <typeMappings>
-                                <typeMapping>double=BigDecimal</typeMapping>
+                                <typeMapping>big_decimal=BigDecimal</typeMapping>
                                 <typeMapping>instant=Instant</typeMapping>
                             </typeMappings>
                             <importMappings>
                                 <importMapping>BigDecimal=java.math.BigDecimal</importMapping>
                                 <importMapping>Instant=java.time.Instant</importMapping>
                             </importMappings>
-                            <output>${project.build.directory}/generated-sources/openapi</output>
                         </configuration>
                     </execution>
                 </executions>

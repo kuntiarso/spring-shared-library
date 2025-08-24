@@ -42,7 +42,7 @@ public class ResponseData<A> {
 
     public static <A> ResponseData<A> error(A body) {
         return body instanceof ErrorData err
-                ? error(err.getResponseCode(), err.getResponseMessage())
+                ? error(err.getCode(), err.getMessage())
                 : error("500", body);
     }
 
