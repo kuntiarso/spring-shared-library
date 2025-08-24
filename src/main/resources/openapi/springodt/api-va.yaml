@@ -14,6 +14,12 @@ components:
           x-field-extra-annotation: |
             @jakarta.validation.constraints.NotNull(message = "paymentId must not be null")
             @jakarta.validation.constraints.NotBlank(message = "paymentId must not be empty")
+        requestId:
+          type: string
+          example: 12345678
+          x-field-extra-annotation: |
+            @jakarta.validation.constraints.NotNull(message = "requestId must not be null")
+            @jakarta.validation.constraints.NotBlank(message = "requestId must not be empty")
         token:
           type: string
           example: eyJhbGciOi...
