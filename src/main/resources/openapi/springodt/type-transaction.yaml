@@ -7,10 +7,12 @@ components:
   schemas:
     TransactionType:
       type: string
-      enum: [ C, O ]
+      enum:
+        - C
+        - O
+      x-enum-descriptions:
+        - "Closed Amount"
+        - "Open Amount"
       example: C
-      description: |
-        C = Closed Amount
-        O = Open Amount
       x-field-extra-annotation: |
-        @jakarta.validation.constraints.NotNull(message = "transactionType must not be null")
+        @com.fasterxml.jackson.annotation.JsonProperty("virtualAccountTrxType")

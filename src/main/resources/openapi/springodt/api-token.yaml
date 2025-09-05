@@ -22,22 +22,21 @@ components:
       type: object
       properties:
         tokenScheme:
-          type: string
-          example: Bearer
+          $ref: "./type-token-scheme.yaml#/components/schemas/TokenScheme"
         accessToken:
           type: string
           example: eyJhbGciOiJIUzI1NiIsInR...
         accessTokenExpiryTime:
           type: string
           format: instant
-          example: "2025-08-20T12:00:00Z"
+          example: "2025-08-20T10:55:00+07:00"
         refreshToken:
           type: string
           example: eyJhbGciOiJIUzI1NiIsInR...
         refreshTokenExpiryTime:
           type: string
           format: instant
-          example: "2025-08-27T12:00:00Z"
+          example: "2025-08-27T10:55:00+07:00"
         expiresIn:
           type: integer
           example: 3600

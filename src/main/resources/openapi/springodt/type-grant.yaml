@@ -7,7 +7,12 @@ components:
   schemas:
     GrantType:
       type: string
-      enum: [ client_credentials, authorization_code ]
+      enum:
+        - client_credentials
+        - authorization_code
+      x-enum-descriptions:
+        - "Client Credentials"
+        - "Authorization Code"
       example: client_credentials
       x-field-extra-annotation: |
         @jakarta.validation.constraints.NotNull(message = "grantType must not be null")

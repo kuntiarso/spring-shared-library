@@ -1,0 +1,119 @@
+openapi: 3.0.3
+info:
+  title: Payment API
+  version: 1.0.0
+paths: { }
+components:
+  schemas:
+    PaymentRequest:
+      type: object
+      properties:
+        orderId:
+          type: string
+          example: 1
+          x-field-extra-annotation: |
+            @jakarta.validation.constraints.NotNull(message = "orderId must not be null")
+            @jakarta.validation.constraints.NotBlank(message = "orderId must not be empty")
+        userId:
+          type: string
+          example: 1
+          x-field-extra-annotation: |
+            @jakarta.validation.constraints.NotNull(message = "userId must not be null")
+            @jakarta.validation.constraints.NotBlank(message = "userId must not be empty")
+        partnerId:
+          type: string
+          example: 12345
+          x-field-extra-annotation: |
+            @jakarta.validation.constraints.NotNull(message = "partnerId must not be null")
+            @jakarta.validation.constraints.NotBlank(message = "partnerId must not be empty")
+        customerNo:
+          type: string
+          example: 0000054321
+          x-field-extra-annotation: |
+            @jakarta.validation.constraints.NotNull(message = "customerNo must not be null")
+            @jakarta.validation.constraints.NotBlank(message = "customerNo must not be empty")
+        vaNo:
+          type: string
+          example: 123450000054321
+          x-field-extra-annotation: |
+            @jakarta.validation.constraints.NotNull(message = "vaNo must not be null")
+            @jakarta.validation.constraints.NotBlank(message = "vaNo must not be empty")
+        vaName:
+          type: string
+          example: John Doe
+          x-field-extra-annotation: |
+            @jakarta.validation.constraints.NotNull(message = "vaName must not be null")
+            @jakarta.validation.constraints.NotBlank(message = "vaName must not be empty")
+        billedAmount:
+          allOf:
+            - $ref: './data-amount.yaml#/components/schemas/AmountData'
+          x-field-extra-annotation: |
+            @jakarta.validation.Valid
+            @jakarta.validation.constraints.NotNull(message = "billedAmount must not be null")
+        transactionType:
+          $ref: './type-transaction.yaml#/components/schemas/TransactionType'
+        channel:
+          $ref: './type-channel.yaml#/components/schemas/Channel'
+        paymentType:
+          $ref: './type-payment.yaml#/components/schemas/PaymentType'
+    PaymentResponse:
+      type: object
+      properties:
+        paymentId:
+          type: string
+          example: 1
+        vaNo:
+          type: string
+          example: 123450000054321
+        amount:
+          $ref: './data-amount.yaml#/components/schemas/AmountData'
+        additionalInfo:
+          $ref: './data-additional.yaml#/components/schemas/AdditionalData'
+        expiredDate:
+          type: string
+          format: instant
+          example: "2025-08-21T10:55:00+07:00"
+    StatusRequest:
+      type: object
+      properties:
+        partnerId:
+          type: string
+          example: 12345
+          x-field-extra-annotation: |
+            @jakarta.validation.constraints.NotNull(message = "partnerId must not be null")
+            @jakarta.validation.constraints.NotBlank(message = "partnerId must not be empty")
+        customerNo:
+          type: string
+          example: 0000054321
+          x-field-extra-annotation: |
+            @jakarta.validation.constraints.NotNull(message = "customerNo must not be null")
+            @jakarta.validation.constraints.NotBlank(message = "customerNo must not be empty")
+        vaNo:
+          type: string
+          example: 123450000054321
+          x-field-extra-annotation: |
+            @jakarta.validation.constraints.NotNull(message = "vaNo must not be null")
+            @jakarta.validation.constraints.NotBlank(message = "vaNo must not be empty")
+    StatusResponse:
+      type: object
+      properties:
+        partnerId:
+          type: string
+          example: 12345
+        customerNo:
+          type: string
+          example: 0000054321
+        vaNo:
+          type: string
+          example: 123450000054321
+        status:
+          type: string
+          example: Pending
+        paidAmount:
+          $ref: './data-amount.yaml#/components/schemas/AmountData'
+        billDetails:
+          type: array
+          items:
+            $ref: './api-doku.yaml#/components/schemas/DokuBillDetail'
+        additional:
+          $ref: './api-doku.yaml#/components/schemas/DokuStatusAdditional'

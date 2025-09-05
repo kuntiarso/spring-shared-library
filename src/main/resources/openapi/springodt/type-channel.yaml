@@ -19,6 +19,18 @@ components:
         - VIRTUAL_ACCOUNT_BANK_PERMATA
         - VIRTUAL_ACCOUNT_BANK_DANAMON
         - VIRTUAL_ACCOUNT_BSS
-      example: VIRTUAL_ACCOUNT_BANK_CIMB
+      x-enum-descriptions:
+        - "VA CIMB"
+        - "VA BSI"
+        - "VA BCA"
+        - "VA BNC"
+        - "VA BNI"
+        - "VA Mandiri"
+        - "VA BRI"
+        - "VA BTN"
+        - "VA Permata"
+        - "VA Danamon"
+        - "VA BSS"
+      example: va_cimb
       x-field-extra-annotation: |
         @jakarta.validation.constraints.NotNull(message = "channel must not be null")

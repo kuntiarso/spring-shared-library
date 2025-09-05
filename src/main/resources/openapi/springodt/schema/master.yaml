@@ -5,7 +5,20 @@ info:
 paths: { }
 components:
   schemas:
+    # doku(s)
+    DokuStatusRequest:
+      $ref: '../api-doku.yaml#/components/schemas/DokuStatusRequest'
+    DokuStatusResponse:
+      $ref: '../api-doku.yaml#/components/schemas/DokuStatusResponse'
     # api(s)
+    PaymentRequest:
+      $ref: '../api-payment.yaml#/components/schemas/PaymentRequest'
+    PaymentResponse:
+      $ref: '../api-payment.yaml#/components/schemas/PaymentResponse'
+    StatusRequest:
+      $ref: '../api-payment.yaml#/components/schemas/StatusRequest'
+    StatusResponse:
+      $ref: '../api-payment.yaml#/components/schemas/StatusResponse'
     TokenRequest:
       $ref: '../api-token.yaml#/components/schemas/TokenRequest'
     TokenResponse:
@@ -23,13 +36,18 @@ components:
       $ref: '../data-amount.yaml#/components/schemas/AmountData'
     ErrorData:
       $ref: '../data-error.yaml#/components/schemas/ErrorData'
-
     # type(s)
     Channel:
       $ref: '../type-channel.yaml#/components/schemas/Channel'
     GrantType:
       $ref: '../type-grant.yaml#/components/schemas/GrantType'
+    PaymentType:
+      $ref: '../type-payment.yaml#/components/schemas/PaymentType'
+    StatusType:
+      $ref: '../type-status.yaml#/components/schemas/StatusType'
     TokenType:
       $ref: '../type-token.yaml#/components/schemas/TokenType'
+    TokenScheme:
+      $ref: '../type-token-scheme.yaml#/components/schemas/TokenScheme'
     TransactionType:
       $ref: '../type-transaction.yaml#/components/schemas/TransactionType'

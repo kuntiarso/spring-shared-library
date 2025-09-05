@@ -7,7 +7,12 @@ components:
   schemas:
     TokenType:
       type: string
-      enum: [ b2b,b2b2c ]
+      enum:
+        - b2b
+        - b2b2c
+      x-enum-descriptions:
+        - "B2B Token"
+        - "B2B2C Token"
       example: b2b
       x-field-extra-annotation: |
         @jakarta.validation.constraints.NotNull(message = "tokenType must not be null")

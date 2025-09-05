@@ -1,0 +1,93 @@
+openapi: 3.0.3
+info:
+  title: Doku API
+  version: 1.0.0
+paths: { }
+components:
+  schemas:
+    DokuAcquirer:
+      type: object
+      properties:
+        id:
+          type: string
+          example: BCA
+    DokuBillDetail:
+      type: object
+      properties:
+        billedAmount:
+          allOf:
+            - $ref: './data-amount.yaml#/components/schemas/AmountData'
+          x-field-extra-annotation: |
+            @com.fasterxml.jackson.annotation.JsonProperty("billAmount")
+    PaymentFlag:
+      type: object
+      properties:
+        english:
+          type: string
+          example: Pending
+        indonesia:
+          type: string
+          example: Menunggu Pembayaran
+    DokuStatusData:
+      type: object
+      properties:
+        paymentFlag:
+          allOf:
+            - $ref: '#/components/schemas/PaymentFlag'
+          x-field-extra-annotation: |
+            @com.fasterxml.jackson.annotation.JsonProperty("paymentFlagReason")
+        partnerId:
+          type: string
+          example: partner01
+          x-field-extra-annotation: |
+            @com.fasterxml.jackson.annotation.JsonProperty("partnerServiceId")
+        customerNo:
+          type: string
+          example: customer01
+        vaNo:
+          type: string
+          example: 123456789
+          x-field-extra-annotation: |
+            @com.fasterxml.jackson.annotation.JsonProperty("virtualAccountNo")
+        paidAmount:
+          $ref: './data-amount.yaml#/components/schemas/AmountData'
+        billDetails:
+          type: array
+          items:
+            $ref: '#/components/schemas/DokuBillDetail'
+    DokuStatusAdditional:
+      type: object
+      properties:
+        acquirer:
+          $ref: '#/components/schemas/DokuAcquirer'
+        paymentId:
+          type: string
+          example: 123456789
+          x-field-extra-annotation: |
+            @com.fasterxml.jackson.annotation.JsonProperty("trxId")
+    # ================================ external schemas below =============================
+    DokuStatusRequest:
+      type: object
+      properties:
+        partnerServiceId:
+          type: string
+          example: partner01
+        customerNo:
+          type: string
+          example: customer01
+        virtualAccountNo:
+          type: string
+          example: 123456789
+    DokuStatusResponse:
+      type: object
+      properties:
+        responseCode:
+          type: string
+          example: 200
+        responseMessage:
+          type: string
+          example: success
+        virtualAccountData:
+          $ref: '#/components/schemas/DokuStatusData'
+        additionalInfo:
+          $ref: '#/components/schemas/DokuStatusAdditional'

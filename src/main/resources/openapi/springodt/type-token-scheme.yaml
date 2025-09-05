@@ -1,0 +1,24 @@
+openapi: 3.0.3
+info:
+  title: Token Scheme Type Schema
+  version: 1.0.0
+paths: { }
+components:
+  schemas:
+    TokenScheme:
+      type: string
+      enum:
+        - basic
+        - bearer
+        - jwt
+        - oidc
+        - opaque
+      x-enum-descriptions:
+        - "Basic Token"
+        - "Bearer Token"
+        - "JWT Token"
+        - "OpenID Connect Token"
+        - "Opaque Token"
+      example: bearer
+      x-field-extra-annotation: |
+        @jakarta.validation.constraints.NotNull(message = "tokenScheme must not be null")

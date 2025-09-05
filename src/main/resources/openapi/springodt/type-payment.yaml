@@ -1,0 +1,32 @@
+openapi: 3.0.3
+info:
+  title: Payment Type Schema
+  version: 1.0.0
+paths: { }
+components:
+  schemas:
+    PaymentType:
+      type: string
+      enum:
+        - VIRTUAL_ACCOUNT
+        - CREDIT_CARD
+        - DEBIT_CARD
+        - BANK_TRANSFER
+        - E_WALLET
+        - PAY_LATER
+        - QRIS
+        - CASH
+        - OTHER
+      x-enum-descriptions:
+        - "Virtual Account"
+        - "Credit Card"
+        - "Debit Card"
+        - "Bank Transfer"
+        - "E-Wallet"
+        - "Pay Later"
+        - "QRIS"
+        - "Cash"
+        - "Other"
+      example: virtual_account
+      x-field-extra-annotation: |
+        @jakarta.validation.constraints.NotNull(message = "paymentType must not be null")
