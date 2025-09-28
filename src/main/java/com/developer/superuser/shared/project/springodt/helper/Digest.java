@@ -3,7 +3,6 @@ package com.developer.superuser.shared.project.springodt.helper;
 import com.developer.superuser.shared.helper.Generator;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
-import org.springframework.stereotype.Component;
 
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
